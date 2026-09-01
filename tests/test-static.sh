@@ -27,13 +27,17 @@ fi
 /usr/bin/grep -q '"name": "codex-line-dog-wallpaper"' "$PLUGIN_ROOT/.codex-plugin/plugin.json"
 /usr/bin/grep -q '"id": "line-dog-wallpaper"' "$PLUGIN_ROOT/assets/theme.json"
 
-test_home="$(/usr/bin/mktemp -d "${TMPDIR:-/tmp}/line-dog-test-home.XXXXXX")"
-cleanup() { /bin/rm -rf "$test_home"; }
-trap cleanup EXIT
-HOME="$test_home" LINE_DOG_TEST_MODE=1 LINE_DOG_SKIP_CODEX_PLUGIN=1 "$REPO_ROOT/install.sh" >/dev/null
-[ -f "$test_home/Library/Application Support/CodexDreamSkinStudio/theme/background.jpg" ]
-[ -f "$test_home/Library/Application Support/CodexDreamSkinStudio/theme/theme.json" ]
-[ -f "$test_home/Library/LaunchAgents/com.openai.codex.line-dog-wallpaper.autostart.plist" ]
-[ -f "$test_home/.codex/codex-dream-skin-studio/scripts/injector.mjs" ]
+if /usr/bin/mdfind 'kMDItemCFBundleIdentifier == "com.openai.codex"' | /usr/bin/grep -q .; then
+  test_home="$(/usr/bin/mktemp -d "${TMPDIR:-/tmp}/line-dog-test-home.XXXXXX")"
+  cleanup() { /bin/rm -rf "$test_home"; }
+  trap cleanup EXIT
+  HOME="$test_home" LINE_DOG_TEST_MODE=1 LINE_DOG_SKIP_CODEX_PLUGIN=1 "$REPO_ROOT/install.sh" >/dev/null
+  [ -f "$test_home/Library/Application Support/CodexDreamSkinStudio/theme/background.jpg" ]
+  [ -f "$test_home/Library/Application Support/CodexDreamSkinStudio/theme/theme.json" ]
+  [ -f "$test_home/Library/LaunchAgents/com.openai.codex.line-dog-wallpaper.autostart.plist" ]
+  [ -f "$test_home/.codex/codex-dream-skin-studio/scripts/injector.mjs" ]
+else
+  printf 'Official Codex app not present; isolated runtime test skipped.\n'
+fi
 
 printf 'Static checks passed.\n'
