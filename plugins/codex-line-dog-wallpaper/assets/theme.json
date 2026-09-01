@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "line-dog-wallpaper",
+  "name": "线条小狗 · Line Dog",
+  "brandSubtitle": "CODEX DREAM SKIN",
+  "tagline": "Make something wonderful.",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "◉  选择项目",
+  "statusText": "LINE DOG ONLINE",
+  "quote": "MAKE SOMETHING WONDERFUL",
+  "image": "background.jpg",
+  "appearance": "auto",
+  "art": {
+    "safeArea": "left",
+    "taskMode": "full",
+    "focusX": 0.7,
+    "focusY": 0.48
+  }
+}

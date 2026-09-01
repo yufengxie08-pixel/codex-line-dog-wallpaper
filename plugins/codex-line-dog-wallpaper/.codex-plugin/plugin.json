@@ -1,0 +1,28 @@
+{
+  "name": "codex-line-dog-wallpaper",
+  "version": "1.0.0",
+  "description": "Install and manage the Line Dog chat wallpaper for the Codex macOS desktop app.",
+  "author": {
+    "name": "yufengxie08-pixel",
+    "url": "https://github.com/yufengxie08-pixel"
+  },
+  "homepage": "https://github.com/yufengxie08-pixel/codex-line-dog-wallpaper",
+  "repository": "https://github.com/yufengxie08-pixel/codex-line-dog-wallpaper",
+  "license": "MIT",
+  "keywords": ["codex", "macos", "wallpaper", "theme", "line-dog"],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Line Dog Wallpaper",
+    "shortDescription": "一键安装线条小狗 Codex 聊天背景。",
+    "longDescription": "在 macOS Codex 桌面应用中安装、恢复和诊断线条小狗聊天背景，并保留此前的 Dream Skin 或 U7 主题以便恢复。",
+    "developerName": "yufengxie08-pixel",
+    "category": "Productivity",
+    "capabilities": ["Interactive", "Write"],
+    "brandColor": "#83AEE2",
+    "defaultPrompt": [
+      "安装线条小狗聊天壁纸。",
+      "检查线条小狗壁纸状态。",
+      "恢复安装前的 Codex 主题。"
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "line-dog-wallpaper",
+  "interface": {
+    "displayName": "Line Dog Wallpaper"
+  },
+  "plugins": [
+    {
+      "name": "codex-line-dog-wallpaper",
+      "source": {
+        "source": "local",
+        "path": "./plugins/codex-line-dog-wallpaper"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
