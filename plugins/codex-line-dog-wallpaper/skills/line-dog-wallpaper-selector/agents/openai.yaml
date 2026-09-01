@@ -1,0 +1,5 @@
+interface:
+  display_name: "线条小狗壁纸选择器"
+  short_description: "在 Codex 桌面端预览并切换四张线条小狗聊天背景"
+  brand_color: "#F2C96D"
+  default_prompt: "Use $line-dog-wallpaper-selector to show the Line Dog wallpaper gallery and help me switch backgrounds."

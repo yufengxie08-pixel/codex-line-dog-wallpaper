@@ -1,12 +1,9 @@
 #!/bin/bash
 
 set -u
+. "$(cd "$(dirname "$0")" && pwd -P)/lib-macos.sh"
 
-LINE_DOG_HOME="${HOME:?A macOS home directory is required}"
-LINE_DOG_STATE_ROOT="$LINE_DOG_HOME/Library/Application Support/CodexLineDogWallpaper"
 LINE_DOG_THEME_JSON="$LINE_DOG_HOME/Library/Application Support/CodexDreamSkinStudio/theme/theme.json"
-LINE_DOG_ENGINE_ROOT="$LINE_DOG_HOME/.codex/codex-dream-skin-studio"
-LINE_DOG_LABEL="com.openai.codex.line-dog-wallpaper.autostart"
 
 agent="not-loaded"
 theme="unknown"
@@ -26,5 +23,10 @@ fi
 
 printf 'agent=%s\n' "$agent"
 printf 'theme=%s\n' "$theme"
+wallpaper_id="$(line_dog_selected_wallpaper_id)"
+printf 'wallpaper=%s\n' "$wallpaper_id"
+printf 'wallpaper_name=%s / %s\n' \
+  "$(line_dog_wallpaper_name_zh "$wallpaper_id")" \
+  "$(line_dog_wallpaper_name_en "$wallpaper_id")"
 printf 'engine=%s\n' "$engine"
 printf 'state=%s\n' "$LINE_DOG_STATE_ROOT"

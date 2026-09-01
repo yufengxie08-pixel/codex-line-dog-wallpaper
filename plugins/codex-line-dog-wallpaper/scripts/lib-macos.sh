@@ -16,18 +16,85 @@ LINE_DOG_PLIST="$LINE_DOG_HOME/Library/LaunchAgents/$LINE_DOG_LABEL.plist"
 LINE_DOG_U7_LABEL="com.openai.codex.u7-wallpaper.autostart"
 LINE_DOG_U7_PLIST="$LINE_DOG_HOME/Library/LaunchAgents/$LINE_DOG_U7_LABEL.plist"
 LINE_DOG_PORT="9341"
+LINE_DOG_DEFAULT_WALLPAPER_ID="yellow-together"
+LINE_DOG_SELECTION_FILE="$LINE_DOG_STATE_ROOT/selected-wallpaper"
 
 line_dog_fail() {
   printf 'Line Dog Wallpaper: %s\n' "$*" >&2
   exit 1
 }
 
+line_dog_wallpaper_ids() {
+  printf '%s\n' yellow-together blue-sky blue-daily pink-friends
+}
+
+line_dog_wallpaper_asset() {
+  case "${1:-}" in
+    yellow-together) printf '%s\n' "$LINE_DOG_PLUGIN_ROOT/assets/line-dog-yellow-together-3840x2400.jpg" ;;
+    blue-sky) printf '%s\n' "$LINE_DOG_PLUGIN_ROOT/assets/line-dog-blue-sky-3840x2400.jpg" ;;
+    blue-daily) printf '%s\n' "$LINE_DOG_PLUGIN_ROOT/assets/line-dog-blue-daily-3840x2400.jpg" ;;
+    pink-friends) printf '%s\n' "$LINE_DOG_PLUGIN_ROOT/assets/line-dog-pink-friends-3840x2400.jpg" ;;
+    *) return 1 ;;
+  esac
+}
+
+line_dog_wallpaper_name_zh() {
+  case "${1:-}" in
+    yellow-together) printf '%s\n' '黄色相伴' ;;
+    blue-sky) printf '%s\n' '蓝天追风' ;;
+    blue-daily) printf '%s\n' '蓝色日常' ;;
+    pink-friends) printf '%s\n' '粉色伙伴' ;;
+    *) return 1 ;;
+  esac
+}
+
+line_dog_wallpaper_name_en() {
+  case "${1:-}" in
+    yellow-together) printf '%s\n' 'Yellow Together' ;;
+    blue-sky) printf '%s\n' 'Blue Sky Adventure' ;;
+    blue-daily) printf '%s\n' 'Blue Daily Life' ;;
+    pink-friends) printf '%s\n' 'Pink Friends' ;;
+    *) return 1 ;;
+  esac
+}
+
+line_dog_validate_wallpaper_id() {
+  line_dog_wallpaper_asset "${1:-}" >/dev/null 2>&1
+}
+
+line_dog_selected_wallpaper_id() {
+  local selected="${LINE_DOG_WALLPAPER_ID:-}"
+  if [ -z "$selected" ] && [ -f "$LINE_DOG_SELECTION_FILE" ]; then
+    selected="$(/bin/cat "$LINE_DOG_SELECTION_FILE")"
+  fi
+  [ -n "$selected" ] || selected="$LINE_DOG_DEFAULT_WALLPAPER_ID"
+  line_dog_validate_wallpaper_id "$selected" || selected="$LINE_DOG_DEFAULT_WALLPAPER_ID"
+  printf '%s\n' "$selected"
+}
+
+line_dog_list_wallpapers() {
+  local selected id default_marker current_marker
+  selected="$(line_dog_selected_wallpaper_id)"
+  while IFS= read -r id; do
+    default_marker=""
+    current_marker=""
+    [ "$id" != "$LINE_DOG_DEFAULT_WALLPAPER_ID" ] || default_marker="default"
+    [ "$id" != "$selected" ] || current_marker="current"
+    printf '%s\t%s\t%s\t%s\t%s\t%s\n' \
+      "$id" "$(line_dog_wallpaper_name_zh "$id")" "$(line_dog_wallpaper_name_en "$id")" \
+      "$(line_dog_wallpaper_asset "$id")" "$default_marker" "$current_marker"
+  done < <(line_dog_wallpaper_ids)
+}
+
 line_dog_require_macos() {
   [ "$(/usr/bin/uname -s)" = "Darwin" ] || line_dog_fail "macOS is required."
   [ -d "$LINE_DOG_ENGINE_SOURCE" ] || line_dog_fail "Bundled Dream Skin engine is missing."
   [ -f "$LINE_DOG_PLUGIN_ROOT/assets/theme.json" ] || line_dog_fail "theme.json is missing."
-  [ -f "$LINE_DOG_PLUGIN_ROOT/assets/line-dog-wallpaper-3840x2400.jpg" ] \
-    || line_dog_fail "The wallpaper asset is missing."
+  local id
+  while IFS= read -r id; do
+    [ -f "$(line_dog_wallpaper_asset "$id")" ] \
+      || line_dog_fail "The wallpaper asset for $id is missing."
+  done < <(line_dog_wallpaper_ids)
 }
 
 line_dog_prepare_dirs() {
@@ -80,14 +147,22 @@ line_dog_snapshot_previous_state() {
 }
 
 line_dog_stage_theme() {
+  local wallpaper_id="${1:-}"
+  [ -n "$wallpaper_id" ] || wallpaper_id="$(line_dog_selected_wallpaper_id)"
+  line_dog_validate_wallpaper_id "$wallpaper_id" \
+    || line_dog_fail "Unknown wallpaper: $wallpaper_id"
+
   /bin/mkdir -p "$LINE_DOG_THEME_DIR"
   local image_tmp="$LINE_DOG_THEME_DIR/.line-dog-background.$$.tmp"
   local theme_tmp="$LINE_DOG_THEME_DIR/.line-dog-theme.$$.tmp"
-  /bin/cp "$LINE_DOG_PLUGIN_ROOT/assets/line-dog-wallpaper-3840x2400.jpg" "$image_tmp"
+  local selection_tmp="$LINE_DOG_STATE_ROOT/.selected-wallpaper.$$.tmp"
+  /bin/cp "$(line_dog_wallpaper_asset "$wallpaper_id")" "$image_tmp"
   /bin/cp "$LINE_DOG_PLUGIN_ROOT/assets/theme.json" "$theme_tmp"
-  /bin/chmod 600 "$image_tmp" "$theme_tmp"
+  /usr/bin/printf '%s\n' "$wallpaper_id" > "$selection_tmp"
+  /bin/chmod 600 "$image_tmp" "$theme_tmp" "$selection_tmp"
   /bin/mv -f "$image_tmp" "$LINE_DOG_THEME_DIR/background.jpg"
   /bin/mv -f "$theme_tmp" "$LINE_DOG_THEME_DIR/theme.json"
+  /bin/mv -f "$selection_tmp" "$LINE_DOG_SELECTION_FILE"
 }
 
 line_dog_disable_u7_agent() {

@@ -13,9 +13,21 @@ done
 /usr/bin/python3 -m json.tool "$PLUGIN_ROOT/.codex-plugin/plugin.json" >/dev/null
 /usr/bin/python3 -m json.tool "$PLUGIN_ROOT/assets/theme.json" >/dev/null
 
-dimensions="$(/usr/bin/sips -g pixelWidth -g pixelHeight "$PLUGIN_ROOT/assets/line-dog-wallpaper-3840x2400.jpg")"
-/usr/bin/grep -q 'pixelWidth: 3840' <<<"$dimensions"
-/usr/bin/grep -q 'pixelHeight: 2400' <<<"$dimensions"
+wallpaper_count=0
+for wallpaper in "$PLUGIN_ROOT"/assets/line-dog-*-3840x2400.jpg; do
+  dimensions="$(/usr/bin/sips -g pixelWidth -g pixelHeight -g profile "$wallpaper")"
+  /usr/bin/grep -q 'pixelWidth: 3840' <<<"$dimensions"
+  /usr/bin/grep -q 'pixelHeight: 2400' <<<"$dimensions"
+  /usr/bin/grep -q 'profile: sRGB IEC61966-2.1' <<<"$dimensions"
+  wallpaper_count=$((wallpaper_count + 1))
+done
+[ "$wallpaper_count" -eq 4 ]
+
+list_output="$(HOME="$(/usr/bin/mktemp -d "${TMPDIR:-/tmp}/line-dog-list-home.XXXXXX")" \
+  "$PLUGIN_ROOT/scripts/select-wallpaper-macos.sh" --list)"
+[ "$(/usr/bin/printf '%s\n' "$list_output" | /usr/bin/wc -l | /usr/bin/tr -d ' ')" -eq 4 ]
+/usr/bin/grep -q $'^yellow-together\t黄色相伴\tYellow Together\t' <<<"$list_output"
+/usr/bin/grep -q $'\tdefault\tcurrent$' <<<"$list_output"
 
 if /usr/bin/grep -RE '/Users/[A-Za-z0-9._-]+/' "$REPO_ROOT" \
   --exclude-dir=.git --exclude='*.jpg' --exclude='*.png' >/dev/null 2>&1; then
@@ -36,6 +48,17 @@ if /usr/bin/mdfind 'kMDItemCFBundleIdentifier == "com.openai.codex"' | /usr/bin/
   [ -f "$test_home/Library/Application Support/CodexDreamSkinStudio/theme/theme.json" ]
   [ -f "$test_home/Library/LaunchAgents/com.openai.codex.line-dog-wallpaper.autostart.plist" ]
   [ -f "$test_home/.codex/codex-dream-skin-studio/scripts/injector.mjs" ]
+  /usr/bin/cmp -s \
+    "$test_home/Library/Application Support/CodexDreamSkinStudio/theme/background.jpg" \
+    "$PLUGIN_ROOT/assets/line-dog-yellow-together-3840x2400.jpg"
+
+  HOME="$test_home" LINE_DOG_TEST_MODE=1 \
+    "$PLUGIN_ROOT/scripts/select-wallpaper-macos.sh" blue-daily --restart-if-needed >/dev/null
+  /usr/bin/cmp -s \
+    "$test_home/Library/Application Support/CodexDreamSkinStudio/theme/background.jpg" \
+    "$PLUGIN_ROOT/assets/line-dog-blue-daily-3840x2400.jpg"
+  /usr/bin/grep -q '^blue-daily$' \
+    "$test_home/Library/Application Support/CodexLineDogWallpaper/selected-wallpaper"
 else
   printf 'Official Codex app not present; isolated runtime test skipped.\n'
 fi

@@ -40,4 +40,5 @@ else
   printf 'The wallpaper runtime is installed. Codex CLI was not found, so the optional plugin card was skipped.\n'
 fi
 
-printf 'Done. Quit and reopen Codex once if the wallpaper is not already visible.\n'
+printf 'Done. The default wallpaper is Yellow Together. Ask Codex to “切换线条小狗壁纸” to see all four choices.\n'
+printf 'Quit and reopen Codex once if the wallpaper is not already visible.\n'

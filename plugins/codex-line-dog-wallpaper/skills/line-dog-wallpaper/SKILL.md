@@ -1,11 +1,11 @@
 ---
 name: line-dog-wallpaper
-description: Install, apply, diagnose, restore, or uninstall the Line Dog chat wallpaper in the Codex macOS desktop app.
+description: Install, apply, diagnose, restore, or uninstall the Line Dog wallpaper collection in the Codex macOS desktop app.
 ---
 
 # Line Dog Wallpaper
 
-Use this skill when the user asks to install, apply, repair, check, restore, or remove the Line Dog Codex chat wallpaper.
+Use this skill when the user asks to install, apply, repair, check, restore, or remove the Line Dog Codex chat wallpaper collection. Use the separate `line-dog-wallpaper-selector` skill when the request is specifically to preview or switch among wallpapers.
 
 ## Safety and compatibility
 
@@ -21,6 +21,7 @@ Run scripts relative to this skill's plugin root.
 
 - Install: `scripts/install-wallpaper-macos.sh`
 - Reapply: `scripts/apply-wallpaper-macos.sh`
+- List or switch wallpapers: `scripts/select-wallpaper-macos.sh`
 - Status: `scripts/status-macos.sh`
 - Restore the previous theme: `scripts/restore-previous-macos.sh`
 - Uninstall the wallpaper runtime: `scripts/uninstall-wallpaper-macos.sh`

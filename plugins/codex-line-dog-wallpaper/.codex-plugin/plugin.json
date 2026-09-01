@@ -1,7 +1,7 @@
 {
   "name": "codex-line-dog-wallpaper",
-  "version": "1.0.0",
-  "description": "Install and manage the Line Dog chat wallpaper for the Codex macOS desktop app.",
+  "version": "1.1.0+codex.20260901155347",
+  "description": "Install, preview, and switch among four Line Dog chat wallpapers for the Codex macOS desktop app.",
   "author": {
     "name": "yufengxie08-pixel",
     "url": "https://github.com/yufengxie08-pixel"
@@ -9,20 +9,30 @@
   "homepage": "https://github.com/yufengxie08-pixel/codex-line-dog-wallpaper",
   "repository": "https://github.com/yufengxie08-pixel/codex-line-dog-wallpaper",
   "license": "MIT",
-  "keywords": ["codex", "macos", "wallpaper", "theme", "line-dog"],
+  "keywords": [
+    "codex",
+    "macos",
+    "wallpaper",
+    "theme",
+    "line-dog"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Line Dog Wallpaper",
-    "shortDescription": "一键安装线条小狗 Codex 聊天背景。",
-    "longDescription": "在 macOS Codex 桌面应用中安装、恢复和诊断线条小狗聊天背景，并保留此前的 Dream Skin 或 U7 主题以便恢复。",
+    "shortDescription": "\u5b89\u88c5\u5e76\u5207\u6362\u56db\u5f20\u7ebf\u6761\u5c0f\u72d7 Codex \u804a\u5929\u80cc\u666f\u3002",
+    "longDescription": "\u5728 macOS Codex \u684c\u9762\u5e94\u7528\u4e2d\u9884\u89c8\u3001\u5b89\u88c5\u548c\u5207\u6362\u56db\u5f20\u7ebf\u6761\u5c0f\u72d7\u804a\u5929\u80cc\u666f\uff0c\u5e76\u4fdd\u7559\u6b64\u524d\u7684 Dream Skin \u6216 U7 \u4e3b\u9898\u4ee5\u4fbf\u6062\u590d\u3002",
     "developerName": "yufengxie08-pixel",
     "category": "Productivity",
-    "capabilities": ["Interactive", "Write"],
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
     "brandColor": "#83AEE2",
     "defaultPrompt": [
-      "安装线条小狗聊天壁纸。",
-      "检查线条小狗壁纸状态。",
-      "恢复安装前的 Codex 主题。"
+      "\u5b89\u88c5\u7ebf\u6761\u5c0f\u72d7\u804a\u5929\u58c1\u7eb8\u3002",
+      "\u5207\u6362\u7ebf\u6761\u5c0f\u72d7\u58c1\u7eb8\u3002",
+      "\u68c0\u67e5\u7ebf\u6761\u5c0f\u72d7\u58c1\u7eb8\u72b6\u6001\u3002",
+      "\u6062\u590d\u5b89\u88c5\u524d\u7684 Codex \u4e3b\u9898\u3002"
     ]
   }
 }

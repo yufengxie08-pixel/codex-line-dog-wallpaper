@@ -2,7 +2,7 @@
 
 ## Line Dog artwork
 
-Artwork by 佳期Qi. Included with permission. See `ARTWORK-LICENSE.md`.
+Four wallpaper illustrations by 佳期Qi. Included with permission. See `ARTWORK-LICENSE.md`.
 
 ## Dream Skin runtime
 

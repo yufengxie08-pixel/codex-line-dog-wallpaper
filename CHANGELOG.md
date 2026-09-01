@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.0 - 2026-09-01
+
+- Expands the collection from one wallpaper to four 3840×2400 wallpapers.
+- Uses Yellow Together as the default background for new installations.
+- Adds a discoverable Codex wallpaper-selector skill with gallery previews.
+- Adds safe hot switching and an authorized automatic-restart fallback.
+- Preserves the original Chinese text in Blue Daily Life.
+
 ## 1.0.0 - 2026-09-01
 
 - First public release.
