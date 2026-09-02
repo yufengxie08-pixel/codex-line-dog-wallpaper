@@ -5,8 +5,8 @@ set -euo pipefail
 LINE_DOG_PLUGIN_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd -P)"
 LINE_DOG_HOME="${HOME:?A macOS home directory is required}"
 LINE_DOG_ENGINE_SOURCE="$LINE_DOG_PLUGIN_ROOT/vendor/codex-dream-skin-studio"
-LINE_DOG_ENGINE_ROOT="$LINE_DOG_HOME/.codex/codex-dream-skin-studio"
 LINE_DOG_STATE_ROOT="$LINE_DOG_HOME/Library/Application Support/CodexLineDogWallpaper"
+LINE_DOG_ENGINE_ROOT="$LINE_DOG_STATE_ROOT/engine"
 LINE_DOG_DREAM_STATE="$LINE_DOG_HOME/Library/Application Support/CodexDreamSkinStudio"
 LINE_DOG_THEME_DIR="$LINE_DOG_DREAM_STATE/theme"
 LINE_DOG_BACKUP_ROOT="$LINE_DOG_STATE_ROOT/backups"
@@ -105,20 +105,36 @@ line_dog_prepare_dirs() {
 }
 
 line_dog_install_engine_if_needed() {
+  local source_version installed_version staging backup
+  source_version="$(/usr/bin/tr -d '[:space:]' < "$LINE_DOG_ENGINE_SOURCE/VERSION")"
+  installed_version=""
+  if [ -f "$LINE_DOG_ENGINE_ROOT/VERSION" ]; then
+    installed_version="$(/usr/bin/tr -d '[:space:]' < "$LINE_DOG_ENGINE_ROOT/VERSION")"
+  fi
   if [ -f "$LINE_DOG_ENGINE_ROOT/scripts/start-dream-skin-macos.sh" ] \
     && [ -f "$LINE_DOG_ENGINE_ROOT/scripts/injector.mjs" ] \
-    && [ -f "$LINE_DOG_ENGINE_ROOT/assets/dream-skin.css" ]; then
+    && [ -f "$LINE_DOG_ENGINE_ROOT/assets/dream-skin.css" ] \
+    && [ "$installed_version" = "$source_version" ]; then
     return 0
   fi
 
-  [ ! -e "$LINE_DOG_ENGINE_ROOT" ] \
-    || line_dog_fail "An incomplete Dream Skin engine already exists at $LINE_DOG_ENGINE_ROOT. Move it aside and retry."
-
-  local staging
-  staging="$(/usr/bin/mktemp -d "$LINE_DOG_HOME/.codex/line-dog-engine.XXXXXX")"
+  staging="$(/usr/bin/mktemp -d "$LINE_DOG_STATE_ROOT/engine-stage.XXXXXX")"
   /usr/bin/rsync -a --exclude '.DS_Store' "$LINE_DOG_ENGINE_SOURCE/" "$staging/"
   /bin/chmod 700 "$staging/scripts/"*.sh 2>/dev/null || true
-  /bin/mv "$staging" "$LINE_DOG_ENGINE_ROOT"
+  backup="$LINE_DOG_STATE_ROOT/engine-previous"
+  if [ -e "$backup" ] && [ ! -e "$LINE_DOG_ENGINE_ROOT" ]; then
+    /bin/mv "$backup" "$LINE_DOG_ENGINE_ROOT"
+  fi
+  [ ! -e "$backup" ] || /bin/rm -rf "$backup"
+  if [ -e "$LINE_DOG_ENGINE_ROOT" ]; then
+    /bin/mv "$LINE_DOG_ENGINE_ROOT" "$backup"
+  fi
+  if /bin/mv "$staging" "$LINE_DOG_ENGINE_ROOT"; then
+    [ ! -e "$backup" ] || /bin/rm -rf "$backup"
+  else
+    [ ! -e "$backup" ] || /bin/mv "$backup" "$LINE_DOG_ENGINE_ROOT"
+    line_dog_fail "Could not install the isolated Line Dog Dream Skin engine."
+  fi
 }
 
 line_dog_source_engine() {

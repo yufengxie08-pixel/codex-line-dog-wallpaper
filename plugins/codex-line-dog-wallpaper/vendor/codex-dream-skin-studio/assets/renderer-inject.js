@@ -17,7 +17,7 @@
     variable: `--ds-community-composer-${property}`,
   })).filter(({ variable }) => cssText.includes(`${variable}:`));
   const ROOT_ATTRS = [
-    "data-dream-skin", SHELL_ATTR,
+    "data-dream-skin", SHELL_ATTR, "data-dream-theme-id",
     "data-dream-art-wide", "data-dream-art-safe", "data-dream-task-mode",
     "data-dream-art-safe-area", "data-dream-art-task-mode", "data-dream-art-aspect",
     "data-dream-art-ready",
@@ -633,6 +633,7 @@
     const shell = resolvedShell();
     setAttribute(root, "data-dream-skin", "active");
     setAttribute(root, SHELL_ATTR, shell);
+    setAttribute(root, "data-dream-theme-id", THEME.id || "custom");
     setStyleProperty(root, "--dream-skin-art", `url("${artUrl}")`);
     applyTheme(root, shell);
     applyArtMetadata(root);
@@ -765,6 +766,12 @@
       '[class*="max-w-"][class*="rounded-2xl"][class*="text-start"]',
     ) ?? node;
   });
+  const resolvedAssistantMessageNodes = () => selectorNodes("message")
+    .filter((node) => node?.hasAttribute?.("data-local-conversation-final-assistant") ||
+      node?.getAttribute?.("data-message-author-role") === "assistant")
+    .map((node) => node.querySelector?.(
+      "[data-response-annotation-conversation][data-response-annotation-target]",
+    ) ?? node);
   const refreshParts = () => {
     metrics.partPasses += 1;
     const desired = new Map();
@@ -778,6 +785,7 @@
     addPart(desired, "project-list", selectorNodes("project-selector"));
     addPart(desired, "thread", selectorNodes("thread-surface"));
     addPart(desired, "message", resolvedMessageNodes());
+    addPart(desired, "assistant-message", resolvedAssistantMessageNodes());
     const composerNodes = [...selectorNodes("composer-chrome"), ...fallbackComposerNodes()];
     addPart(desired, "composer", composerNodes);
     addPart(desired, "composer-toolbar", [

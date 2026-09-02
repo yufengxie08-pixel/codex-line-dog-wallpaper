@@ -3,8 +3,8 @@
 set -Eeuo pipefail
 
 LINE_DOG_HOME="${HOME:?A macOS home directory is required}"
-LINE_DOG_ENGINE_ROOT="$LINE_DOG_HOME/.codex/codex-dream-skin-studio"
 LINE_DOG_STATE_ROOT="$LINE_DOG_HOME/Library/Application Support/CodexLineDogWallpaper"
+LINE_DOG_ENGINE_ROOT="$LINE_DOG_STATE_ROOT/engine"
 LINE_DOG_DEFER_FILE="$LINE_DOG_HOME/Library/Application Support/CodexDreamSkinStudio/autostart-defer-current-pid"
 LINE_DOG_FAILURE_STAMP="$LINE_DOG_STATE_ROOT/last-autostart-failure"
 LINE_DOG_PORT="9341"

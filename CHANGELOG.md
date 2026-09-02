@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.0 - 2026-09-02
+
+- Removes the large surface behind final assistant replies so more wallpaper remains visible.
+- Keeps user bubbles, tool cards, code blocks, and the composer unchanged.
+- Adds a subtle inherited text shadow for reply readability.
+- Moves Line Dog to an isolated Dream Skin engine so U7 and other themes are not modified.
+- Adds live semantic targeting for the assistant response surface.
+
 ## 1.1.0 - 2026-09-01
 
 - Expands the collection from one wallpaper to four 3840×2400 wallpapers.

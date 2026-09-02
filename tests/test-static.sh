@@ -12,6 +12,14 @@ done
 /usr/bin/python3 -m json.tool "$REPO_ROOT/.agents/plugins/marketplace.json" >/dev/null
 /usr/bin/python3 -m json.tool "$PLUGIN_ROOT/.codex-plugin/plugin.json" >/dev/null
 /usr/bin/python3 -m json.tool "$PLUGIN_ROOT/assets/theme.json" >/dev/null
+/usr/bin/grep -q 'data-dream-theme-id' \
+  "$PLUGIN_ROOT/vendor/codex-dream-skin-studio/assets/renderer-inject.js"
+/usr/bin/grep -q 'assistant-message' \
+  "$PLUGIN_ROOT/vendor/codex-dream-skin-studio/assets/renderer-inject.js"
+/usr/bin/grep -q 'data-dream-theme-id="line-dog-wallpaper".*assistant-message' \
+  "$PLUGIN_ROOT/vendor/codex-dream-skin-studio/assets/dream-skin.css"
+/usr/bin/grep -q 'background-color: transparent !important' \
+  "$PLUGIN_ROOT/vendor/codex-dream-skin-studio/assets/dream-skin.css"
 
 wallpaper_count=0
 for wallpaper in "$PLUGIN_ROOT"/assets/line-dog-*-3840x2400.jpg; do
@@ -47,7 +55,12 @@ if /usr/bin/mdfind 'kMDItemCFBundleIdentifier == "com.openai.codex"' | /usr/bin/
   [ -f "$test_home/Library/Application Support/CodexDreamSkinStudio/theme/background.jpg" ]
   [ -f "$test_home/Library/Application Support/CodexDreamSkinStudio/theme/theme.json" ]
   [ -f "$test_home/Library/LaunchAgents/com.openai.codex.line-dog-wallpaper.autostart.plist" ]
-  [ -f "$test_home/.codex/codex-dream-skin-studio/scripts/injector.mjs" ]
+  isolated_engine="$test_home/Library/Application Support/CodexLineDogWallpaper/engine"
+  [ -f "$isolated_engine/scripts/injector.mjs" ]
+  [ -f "$isolated_engine/assets/dream-skin.css" ]
+  [ "$(/usr/bin/tr -d '[:space:]' < "$isolated_engine/VERSION")" = "1.5.17" ]
+  /usr/bin/env node "$isolated_engine/scripts/injector.mjs" --check-payload \
+    --theme-dir "$test_home/Library/Application Support/CodexDreamSkinStudio/theme" >/dev/null
   /usr/bin/cmp -s \
     "$test_home/Library/Application Support/CodexDreamSkinStudio/theme/background.jpg" \
     "$PLUGIN_ROOT/assets/line-dog-yellow-together-3840x2400.jpg"

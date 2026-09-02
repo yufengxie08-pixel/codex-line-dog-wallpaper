@@ -12,6 +12,10 @@
 
 把四张“线条小狗”插画设为 macOS Codex 桌面应用的聊天背景。全部壁纸均为 3840×2400、16:10、sRGB，适配 MacBook Pro Retina 屏幕；首次安装默认使用“黄色相伴”。插件不会修改 Codex 应用包，而是通过仅监听本机回环地址的 Dream Skin 运行时加载背景。
 
+### 无遮挡回复
+
+最终的 Codex 助手回复不再显示大块白色圆角背景，文字直接呈现在壁纸上，并带有轻微阴影以维持可读性。用户自己的消息气泡、工具调用卡片、代码块、文件预览以及底部输入框全部保持原样。该效果只在本项目的线条小狗主题中启用，不会改变 U7 或其他 Dream Skin 主题。
+
 ### 安装方式一：Codex 插件
 
 ```bash
@@ -60,7 +64,7 @@ plugins/codex-line-dog-wallpaper/scripts/select-wallpaper-macos.sh blue-sky --re
 plugins/codex-line-dog-wallpaper/scripts/restore-previous-macos.sh
 ```
 
-双击安装包中的 `Uninstall Line Dog Wallpaper.command` 可恢复之前的主题并移除插件注册。共享的 Dream Skin 引擎和恢复备份会保留，避免破坏其他主题。
+双击安装包中的 `Uninstall Line Dog Wallpaper.command` 可恢复之前的主题并移除插件注册。线条小狗的独立运行时和恢复备份会保留，避免破坏其他主题。
 
 ### 兼容性
 
@@ -76,6 +80,10 @@ plugins/codex-line-dog-wallpaper/scripts/restore-previous-macos.sh
 ## English
 
 Use four Line Dog illustrations as chat backgrounds in the Codex desktop app for macOS. Every wallpaper is a 3840×2400, 16:10, sRGB asset designed for MacBook Pro Retina displays. New installations default to Yellow Together. The plugin does not modify the signed Codex app bundle; it loads the background through a loopback-only Dream Skin runtime.
+
+### Unobstructed replies
+
+Final assistant replies no longer use a large rounded surface. Their text appears directly over the wallpaper with a subtle readability shadow. User bubbles, tool cards, code blocks, file previews, and the composer remain unchanged. This behavior is scoped to the Line Dog theme and does not alter U7 or other Dream Skin themes.
 
 ### Option 1: install as a Codex plugin
 
@@ -125,7 +133,7 @@ Ask Codex to restore the theme that was active before installation, or run:
 plugins/codex-line-dog-wallpaper/scripts/restore-previous-macos.sh
 ```
 
-The release bundle also includes `Uninstall Line Dog Wallpaper.command`. Uninstalling preserves the shared Dream Skin engine and recovery backup so other themes remain safe.
+The release bundle also includes `Uninstall Line Dog Wallpaper.command`. Uninstalling preserves the isolated Line Dog runtime and recovery backup so other themes remain safe.
 
 ### Compatibility
 

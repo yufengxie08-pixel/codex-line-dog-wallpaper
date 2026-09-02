@@ -11,6 +11,8 @@ Use this skill when the user asks to install, apply, repair, check, restore, or 
 
 - This plugin supports macOS only.
 - It uses a verified loopback-only debugging endpoint in the official Codex desktop app and never modifies the signed app bundle.
+- The Line Dog theme makes only the final assistant response surface transparent. User bubbles, tool cards, code blocks, file previews, and the composer remain native.
+- It uses an isolated bundled Dream Skin engine; do not replace or patch another theme's engine.
 - Installing Line Dog disables the U7 launch agent when present but does not delete U7 files.
 - The first installation snapshots the current Dream Skin theme. Restoration uses that snapshot.
 - If Codex is already open without the verified endpoint, never interrupt the active conversation. The installer defers that process and asks the user to quit and reopen Codex once.
