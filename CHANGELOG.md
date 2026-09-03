@@ -1,5 +1,11 @@
 # Changelog
 
+## 2.0.1 - 2026-09-03
+
+- Restores browser, terminal, and review tab controls in the shared Codex titlebar.
+- Keeps the fix compatible with both expanded and split right-panel layouts.
+- Preserves wallpaper visibility and native toolbar behavior in light and dark modes.
+
 ## 2.0.0 - 2026-09-03
 
 - Upgrades the collection from chat backgrounds to four complete Codex skins.

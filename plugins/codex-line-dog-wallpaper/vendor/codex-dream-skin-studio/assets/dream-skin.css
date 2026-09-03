@@ -1097,6 +1097,19 @@ html[data-dream-skin="active"][data-dream-art-wide="true"] main:is(.main-surface
   filter: drop-shadow(0 1px 2px rgb(var(--ds-bg-rgb) / .72));
 }
 
+/* The right-panel tab strip shares the macOS titlebar plane with this fixed
+   shell header. A full-width painted header sits above that strip and hides
+   its tabs whenever the browser, terminal, or review panel is expanded. Keep
+   the shell plane transparent so Codex can paint each native toolbar region. */
+html[data-dream-skin="active"][data-dream-art-wide="true"]
+  header[data-pip-obstacle="app-shell-header"][data-app-shell-header-layout] {
+  background: transparent !important;
+  border-bottom-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 /* Codex moves focus to this non-interactive route wrapper after Shift. Its
    native outline can span the full content pane and an embedded webview. */
 html[data-dream-skin="active"] main:is(.main-surface, [data-app-shell-main-surface], [class*="_MainContentSurface_"])

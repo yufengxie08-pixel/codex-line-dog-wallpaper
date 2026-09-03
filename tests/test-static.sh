@@ -27,6 +27,8 @@ done
   "$PLUGIN_ROOT/vendor/codex-dream-skin-studio/assets/renderer-inject.js"
 /usr/bin/grep -q 'Line Dog Full Skin 2.0' \
   "$PLUGIN_ROOT/vendor/codex-dream-skin-studio/assets/dream-skin.css"
+/usr/bin/grep -q 'header\[data-pip-obstacle="app-shell-header"\]\[data-app-shell-header-layout\]' \
+  "$PLUGIN_ROOT/vendor/codex-dream-skin-studio/assets/dream-skin.css"
 
 wallpaper_count=0
 for wallpaper in "$PLUGIN_ROOT"/assets/line-dog-*-3840x2400.jpg; do
@@ -65,7 +67,7 @@ if /usr/bin/mdfind 'kMDItemCFBundleIdentifier == "com.openai.codex"' | /usr/bin/
   isolated_engine="$test_home/Library/Application Support/CodexLineDogWallpaper/engine"
   [ -f "$isolated_engine/scripts/injector.mjs" ]
   [ -f "$isolated_engine/assets/dream-skin.css" ]
-  [ "$(/usr/bin/tr -d '[:space:]' < "$isolated_engine/VERSION")" = "1.6.1" ]
+  [ "$(/usr/bin/tr -d '[:space:]' < "$isolated_engine/VERSION")" = "1.6.2" ]
   /usr/bin/env node "$isolated_engine/scripts/injector.mjs" --check-payload \
     --theme-dir "$test_home/Library/Application Support/CodexDreamSkinStudio/theme" >/dev/null
   /usr/bin/cmp -s \
