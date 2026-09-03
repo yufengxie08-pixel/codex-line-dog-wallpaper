@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "line-dog-blue-daily",
+  "name": "线条小狗 · 蓝色日常",
+  "brandSubtitle": "LINE DOG FULL SKIN",
+  "tagline": "A little fun for ordinary days.",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "🐾  选择项目",
+  "statusText": "BLUE DAILY LIFE",
+  "quote": "MAKE BORING DAYS INTERESTING",
+  "image": "background.jpg",
+  "appearance": "auto",
+  "art": { "safeArea": "center", "taskMode": "full", "focusX": 0.5, "focusY": 0.51 },
+  "colorMode": "explicit",
+  "colors": {
+    "background": "#E8F3FF", "panel": "#F7FBFF", "panelAlt": "#CFE5FA",
+    "accent": "#4D82C4", "accentAlt": "#7AA7DB", "secondary": "#A46D55",
+    "highlight": "#6677C8", "text": "#1D2836", "muted": "#607085",
+    "line": "rgba(62, 104, 157, .24)"
+  }
+}

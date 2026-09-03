@@ -15,7 +15,7 @@ line_dog_write_plist
 line_dog_load_agent
 
 if line_dog_hot_apply_if_possible; then
-  printf 'Line Dog Wallpaper was reapplied without restarting Codex.\n'
+  printf 'Line Dog Full Skin was reapplied without restarting Codex.\n'
 else
-  printf 'The wallpaper is staged. Quit and reopen Codex once to activate it.\n'
+  printf 'The skin is staged. Quit and reopen Codex once to activate it.\n'
 fi

@@ -20,7 +20,7 @@ LINE_DOG_DEFAULT_WALLPAPER_ID="yellow-together"
 LINE_DOG_SELECTION_FILE="$LINE_DOG_STATE_ROOT/selected-wallpaper"
 
 line_dog_fail() {
-  printf 'Line Dog Wallpaper: %s\n' "$*" >&2
+  printf 'Line Dog Full Skin: %s\n' "$*" >&2
   exit 1
 }
 
@@ -34,6 +34,16 @@ line_dog_wallpaper_asset() {
     blue-sky) printf '%s\n' "$LINE_DOG_PLUGIN_ROOT/assets/line-dog-blue-sky-3840x2400.jpg" ;;
     blue-daily) printf '%s\n' "$LINE_DOG_PLUGIN_ROOT/assets/line-dog-blue-daily-3840x2400.jpg" ;;
     pink-friends) printf '%s\n' "$LINE_DOG_PLUGIN_ROOT/assets/line-dog-pink-friends-3840x2400.jpg" ;;
+    *) return 1 ;;
+  esac
+}
+
+line_dog_theme_asset() {
+  case "${1:-}" in
+    yellow-together) printf '%s\n' "$LINE_DOG_PLUGIN_ROOT/assets/themes/yellow-together.json" ;;
+    blue-sky) printf '%s\n' "$LINE_DOG_PLUGIN_ROOT/assets/themes/blue-sky.json" ;;
+    blue-daily) printf '%s\n' "$LINE_DOG_PLUGIN_ROOT/assets/themes/blue-daily.json" ;;
+    pink-friends) printf '%s\n' "$LINE_DOG_PLUGIN_ROOT/assets/themes/pink-friends.json" ;;
     *) return 1 ;;
   esac
 }
@@ -94,6 +104,8 @@ line_dog_require_macos() {
   while IFS= read -r id; do
     [ -f "$(line_dog_wallpaper_asset "$id")" ] \
       || line_dog_fail "The wallpaper asset for $id is missing."
+    [ -f "$(line_dog_theme_asset "$id")" ] \
+      || line_dog_fail "The skin palette for $id is missing."
   done < <(line_dog_wallpaper_ids)
 }
 
@@ -173,7 +185,7 @@ line_dog_stage_theme() {
   local theme_tmp="$LINE_DOG_THEME_DIR/.line-dog-theme.$$.tmp"
   local selection_tmp="$LINE_DOG_STATE_ROOT/.selected-wallpaper.$$.tmp"
   /bin/cp "$(line_dog_wallpaper_asset "$wallpaper_id")" "$image_tmp"
-  /bin/cp "$LINE_DOG_PLUGIN_ROOT/assets/theme.json" "$theme_tmp"
+  /bin/cp "$(line_dog_theme_asset "$wallpaper_id")" "$theme_tmp"
   /usr/bin/printf '%s\n' "$wallpaper_id" > "$selection_tmp"
   /bin/chmod 600 "$image_tmp" "$theme_tmp" "$selection_tmp"
   /bin/mv -f "$image_tmp" "$LINE_DOG_THEME_DIR/background.jpg"

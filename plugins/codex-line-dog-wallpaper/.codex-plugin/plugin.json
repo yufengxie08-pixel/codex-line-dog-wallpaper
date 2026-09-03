@@ -1,7 +1,7 @@
 {
   "name": "codex-line-dog-wallpaper",
-  "version": "1.2.0+codex.20260902110840",
-  "description": "Install and switch four unobstructed Line Dog chat wallpapers in the Codex macOS desktop app.",
+  "version": "2.0.0+codex.20260903051522",
+  "description": "Install and switch four complete Line Dog skins with matched light and dark palettes in Codex for macOS.",
   "author": {
     "name": "yufengxie08-pixel",
     "url": "https://github.com/yufengxie08-pixel"
@@ -18,9 +18,9 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Line Dog Wallpaper",
-    "shortDescription": "\u5b89\u88c5\u5e76\u5207\u6362\u56db\u5f20\u65e0\u906e\u6321\u7684\u7ebf\u6761\u5c0f\u72d7 Codex \u804a\u5929\u80cc\u666f\u3002",
-    "longDescription": "\u5728 macOS Codex \u684c\u9762\u5e94\u7528\u4e2d\u9884\u89c8\u3001\u5b89\u88c5\u548c\u5207\u6362\u56db\u5f20\u7ebf\u6761\u5c0f\u72d7\u804a\u5929\u80cc\u666f\uff1b\u52a9\u624b\u56de\u590d\u533a\u57df\u900f\u660e\u663e\u793a\u5e76\u4fdd\u7559\u8f7b\u5fae\u6587\u5b57\u9634\u5f71\uff0c\u7528\u6237\u6d88\u606f\u3001\u5de5\u5177\u5361\u7247\u3001\u4ee3\u7801\u5757\u548c\u8f93\u5165\u6846\u4fdd\u6301\u539f\u6837\u3002",
+    "displayName": "Line Dog Full Skin",
+    "shortDescription": "\u5b89\u88c5\u5e76\u5207\u6362\u56db\u5957\u7ebf\u6761\u5c0f\u72d7 Codex \u5b8c\u6574\u76ae\u80a4\u3002",
+    "longDescription": "\u4e3a macOS Codex \u684c\u9762\u5e94\u7528\u5b89\u88c5\u56db\u5957\u7ebf\u6761\u5c0f\u72d7\u5b8c\u6574\u76ae\u80a4\uff1b\u6bcf\u5f20\u58c1\u7eb8\u62e5\u6709\u72ec\u7acb\u7684\u660e\u6697\u914d\u8272\u3001\u7cd6\u7eb8\u78e8\u7802\u4fa7\u680f\u4e0e\u8f93\u5165\u6846\u3001\u4e13\u5c5e\u5c0f\u72d7\u56fe\u6807\uff0c\u5e76\u4fdd\u7559\u65e0\u906e\u6321\u7684\u52a9\u624b\u56de\u590d\u6b63\u6587\u3002",
     "developerName": "yufengxie08-pixel",
     "category": "Productivity",
     "capabilities": [

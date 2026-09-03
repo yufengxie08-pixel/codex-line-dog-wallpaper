@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "line-dog-blue-sky",
+  "name": "线条小狗 · 蓝天追风",
+  "brandSubtitle": "LINE DOG FULL SKIN",
+  "tagline": "Run free. Build bright ideas.",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "🐾  选择项目",
+  "statusText": "BLUE SKY ADVENTURE",
+  "quote": "CHASE THE WIND · SHIP THE IDEA",
+  "image": "background.jpg",
+  "appearance": "auto",
+  "art": { "safeArea": "left", "taskMode": "full", "focusX": 0.62, "focusY": 0.52 },
+  "colorMode": "explicit",
+  "colors": {
+    "background": "#EAF5FF", "panel": "#F8FCFF", "panelAlt": "#D9EBFB",
+    "accent": "#4D8FCF", "accentAlt": "#7DB8E8", "secondary": "#E3AF57",
+    "highlight": "#6E71C8", "text": "#1D2A36", "muted": "#607285",
+    "line": "rgba(63, 121, 175, .24)"
+  }
+}

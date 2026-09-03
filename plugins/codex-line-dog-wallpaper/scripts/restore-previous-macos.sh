@@ -14,7 +14,7 @@ domain="gui/$(/usr/bin/id -u)"
 if [ -d "$LINE_DOG_BACKUP_ROOT/theme-before-install" ]; then
   /bin/mkdir -p "$LINE_DOG_THEME_DIR"
   /usr/bin/rsync -a "$LINE_DOG_BACKUP_ROOT/theme-before-install/" "$LINE_DOG_THEME_DIR/"
-  printf 'Restored the theme that was active before Line Dog Wallpaper.\n'
+  printf 'Restored the theme that was active before Line Dog Full Skin.\n'
 else
   printf 'No previous theme backup was recorded; the current theme was left untouched.\n'
 fi

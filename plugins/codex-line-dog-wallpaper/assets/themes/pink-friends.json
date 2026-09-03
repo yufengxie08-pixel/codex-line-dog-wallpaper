@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "line-dog-pink-friends",
+  "name": "线条小狗 · 粉色伙伴",
+  "brandSubtitle": "LINE DOG FULL SKIN",
+  "tagline": "Better together, one idea at a time.",
+  "projectPrefix": "选择项目 · ",
+  "projectLabel": "🐾  选择项目",
+  "statusText": "PINK FRIENDS",
+  "quote": "BETTER TOGETHER · KEEP CREATING",
+  "image": "background.jpg",
+  "appearance": "auto",
+  "art": { "safeArea": "center", "taskMode": "full", "focusX": 0.5, "focusY": 0.54 },
+  "colorMode": "explicit",
+  "colors": {
+    "background": "#FFF0F6", "panel": "#FFF8FB", "panelAlt": "#F5D5E3",
+    "accent": "#D66495", "accentAlt": "#F09AB8", "secondary": "#86A9A1",
+    "highlight": "#AF6BB2", "text": "#38232C", "muted": "#7E6070",
+    "line": "rgba(173, 76, 119, .22)"
+  }
+}

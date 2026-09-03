@@ -37,8 +37,8 @@ if [ "${LINE_DOG_SKIP_CODEX_PLUGIN:-0}" != "1" ] && command -v codex >/dev/null 
   codex plugin add "$LINE_DOG_PLUGIN@$LINE_DOG_MARKETPLACE" >/dev/null
   printf 'Codex plugin installed: %s@%s\n' "$LINE_DOG_PLUGIN" "$LINE_DOG_MARKETPLACE"
 else
-  printf 'The wallpaper runtime is installed. Codex CLI was not found, so the optional plugin card was skipped.\n'
+  printf 'The Line Dog full-skin runtime is installed. Codex CLI was not found, so the optional plugin card was skipped.\n'
 fi
 
-printf 'Done. The default wallpaper is Yellow Together. Ask Codex to “切换线条小狗壁纸” to see all four choices.\n'
-printf 'Quit and reopen Codex once if the wallpaper is not already visible.\n'
+printf 'Done. The default skin is Yellow Together. Ask Codex to “切换线条小狗皮肤” to see all four choices.\n'
+printf 'Quit and reopen Codex once if the skin is not already visible.\n'

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.0.0 - 2026-09-03
+
+- Upgrades the collection from chat backgrounds to four complete Codex skins.
+- Adds a wallpaper-matched light and dark palette for every illustration.
+- Extends candy-glass styling across the sidebar, header, composer, cards, menus, dialogs, and native controls.
+- Adds purpose-built Line Dog, paw, chat, bone, and clock icons for stable navigation surfaces.
+- Keeps final assistant replies free of the large opaque response card.
+- Switches each wallpaper and its complete palette together through the existing selector.
+
 ## 1.2.0 - 2026-09-02
 
 - Removes the large surface behind final assistant replies so more wallpaper remains visible.

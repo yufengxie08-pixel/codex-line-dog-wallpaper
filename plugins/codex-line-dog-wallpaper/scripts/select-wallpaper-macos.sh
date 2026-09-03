@@ -60,7 +60,7 @@ line_dog_load_agent
 
 wallpaper_name="$(line_dog_wallpaper_name_zh "$wallpaper_id") / $(line_dog_wallpaper_name_en "$wallpaper_id")"
 if line_dog_hot_apply_if_possible; then
-  printf 'Wallpaper applied: %s\n' "$wallpaper_name"
+  printf 'Skin applied: %s\n' "$wallpaper_name"
   exit 0
 fi
 
@@ -71,4 +71,4 @@ if [ "$restart_if_needed" = "true" ] && [ "${LINE_DOG_TEST_MODE:-0}" != "1" ]; t
   exit 0
 fi
 
-printf 'Wallpaper staged: %s. Restart Codex once to apply it.\n' "$wallpaper_name"
+printf 'Skin staged: %s. Restart Codex once to apply it.\n' "$wallpaper_name"

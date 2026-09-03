@@ -5,28 +5,17 @@
   "brandSubtitle": "LINE DOG FULL SKIN",
   "tagline": "Stay close. Make something warm.",
   "projectPrefix": "选择项目 · ",
-  "projectLabel": "◉  选择项目",
+  "projectLabel": "🐾  选择项目",
   "statusText": "YELLOW TOGETHER",
   "quote": "STAY CLOSE · KEEP CREATING",
   "image": "background.jpg",
   "appearance": "auto",
-  "art": {
-    "safeArea": "left",
-    "taskMode": "full",
-    "focusX": 0.7,
-    "focusY": 0.5
-  },
+  "art": { "safeArea": "left", "taskMode": "full", "focusX": 0.7, "focusY": 0.5 },
   "colorMode": "explicit",
   "colors": {
-    "background": "#FFF4D6",
-    "panel": "#FFF9EA",
-    "panelAlt": "#F8DDA1",
-    "accent": "#D88B2F",
-    "accentAlt": "#F3B85C",
-    "secondary": "#73A7A1",
-    "highlight": "#E87961",
-    "text": "#30251C",
-    "muted": "#746557",
+    "background": "#FFF4D6", "panel": "#FFF9EA", "panelAlt": "#F8DDA1",
+    "accent": "#D88B2F", "accentAlt": "#F3B85C", "secondary": "#73A7A1",
+    "highlight": "#E87961", "text": "#30251C", "muted": "#746557",
     "line": "rgba(157, 105, 43, .23)"
   }
 }

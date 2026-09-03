@@ -16,8 +16,8 @@ line_dog_write_plist
 line_dog_load_agent
 
 if line_dog_hot_apply_if_possible; then
-  printf 'Line Dog Wallpaper is active now.\n'
+  printf 'Line Dog Full Skin is active now.\n'
 else
-  printf 'Line Dog Wallpaper is installed. Quit and reopen Codex once to activate it.\n'
+  printf 'Line Dog Full Skin is installed. Quit and reopen Codex once to activate it.\n'
 fi
 printf 'The previous theme and U7 files were preserved in %s.\n' "$LINE_DOG_BACKUP_ROOT"
