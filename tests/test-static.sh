@@ -39,6 +39,19 @@ if /usr/bin/grep -E '^[[:space:]]*(display|visibility|opacity|position|z-index|o
 fi
 /usr/bin/env node --check "$PLUGIN_ROOT/vendor/codex-dream-skin-studio/scripts/injector.mjs"
 
+# A branch ZIP must install its bundled code instead of fetching main.
+installer_fixture="$(/usr/bin/mktemp -d "${TMPDIR:-/tmp}/line-dog-installer.XXXXXX")"
+/bin/mkdir -p "$installer_fixture/plugins/codex-line-dog-wallpaper"
+/bin/cp "$REPO_ROOT/Install Line Dog Wallpaper.command" "$installer_fixture/"
+/bin/cat > "$installer_fixture/install.sh" <<'INSTALL_TEST'
+#!/bin/bash
+: > "$LINE_DOG_INSTALLER_TEST_MARKER"
+INSTALL_TEST
+LINE_DOG_INSTALLER_TEST_MARKER="$installer_fixture/local-used" \
+  /bin/bash "$installer_fixture/Install Line Dog Wallpaper.command" <<<"" >/dev/null
+[ -f "$installer_fixture/local-used" ]
+/bin/rm -rf "$installer_fixture"
+
 wallpaper_count=0
 for wallpaper in "$PLUGIN_ROOT"/assets/line-dog-*-3840x2400.jpg; do
   dimensions="$(/usr/bin/sips -g pixelWidth -g pixelHeight -g profile "$wallpaper")"

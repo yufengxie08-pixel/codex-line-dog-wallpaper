@@ -33,7 +33,7 @@ codex plugin add codex-line-dog-wallpaper@line-dog-wallpaper
 
 ### 安装方式三：双击安装
 
-从 [Releases](https://github.com/yufengxie08-pixel/codex-line-dog-wallpaper/releases/latest) 下载 `Line-Dog-Wallpaper-Installer.zip`，解压后双击 `Install Line Dog Wallpaper.command`。如果 macOS 阻止首次打开，请右键文件并选择“打开”。
+从 [Releases](https://github.com/yufengxie08-pixel/codex-line-dog-wallpaper/releases/latest) 下载 `Line-Dog-Wallpaper-Installer.zip`，解压后双击 `Install Line Dog Wallpaper.command`。如果 macOS 阻止首次打开，请右键文件并选择“打开”。从仓库分支下载完整 ZIP 时，双击安装器会使用 ZIP 内同版本的文件。
 
 安装时会备份当前 Dream Skin 主题，并停用但不会删除 U7 自动启动项。如果 Codex 正在运行，安装器不会打断当前对话；安装或更新后请正常退出并重新打开 Codex 一次。
 
@@ -102,7 +102,7 @@ Start a new Codex task and ask: `Install the Line Dog wallpaper.`
 
 ### Option 3: double-click installer
 
-Download `Line-Dog-Wallpaper-Installer.zip` from the [latest release](https://github.com/yufengxie08-pixel/codex-line-dog-wallpaper/releases/latest), unzip it, and double-click `Install Line Dog Wallpaper.command`. If Gatekeeper blocks the first launch, right-click the file and choose Open.
+Download `Line-Dog-Wallpaper-Installer.zip` from the [latest release](https://github.com/yufengxie08-pixel/codex-line-dog-wallpaper/releases/latest), unzip it, and double-click `Install Line Dog Wallpaper.command`. If Gatekeeper blocks the first launch, right-click the file and choose Open. When run from a complete repository ZIP, the installer uses the files bundled in that ZIP.
 
 The installer backs up the current Dream Skin theme and disables—but does not delete—the U7 autostart agent. It never interrupts an open Codex conversation; quit and reopen Codex once after installing or updating.
 
