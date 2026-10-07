@@ -30,6 +30,15 @@ done
 /usr/bin/grep -q 'header\[data-pip-obstacle="app-shell-header"\]\[data-app-shell-header-layout\]' \
   "$PLUGIN_ROOT/vendor/codex-dream-skin-studio/assets/dream-skin.css"
 
+safe_css="$PLUGIN_ROOT/vendor/codex-dream-skin-studio/assets/line-dog-safe.css"
+/usr/bin/grep -q 'line-dog-safe.css' "$PLUGIN_ROOT/vendor/codex-dream-skin-studio/scripts/injector.mjs"
+/usr/bin/grep -q 'theme.id.startsWith("line-dog-")' "$PLUGIN_ROOT/vendor/codex-dream-skin-studio/scripts/injector.mjs"
+if /usr/bin/grep -E '^[[:space:]]*(display|visibility|opacity|position|z-index|overflow|pointer-events|transform)[[:space:]]*:' "$safe_css"; then
+  printf 'Compatibility wallpaper CSS must not change native visibility or layout.\n' >&2
+  exit 1
+fi
+/usr/bin/env node --check "$PLUGIN_ROOT/vendor/codex-dream-skin-studio/scripts/injector.mjs"
+
 wallpaper_count=0
 for wallpaper in "$PLUGIN_ROOT"/assets/line-dog-*-3840x2400.jpg; do
   dimensions="$(/usr/bin/sips -g pixelWidth -g pixelHeight -g profile "$wallpaper")"
@@ -67,7 +76,7 @@ if /usr/bin/mdfind 'kMDItemCFBundleIdentifier == "com.openai.codex"' | /usr/bin/
   isolated_engine="$test_home/Library/Application Support/CodexLineDogWallpaper/engine"
   [ -f "$isolated_engine/scripts/injector.mjs" ]
   [ -f "$isolated_engine/assets/dream-skin.css" ]
-  [ "$(/usr/bin/tr -d '[:space:]' < "$isolated_engine/VERSION")" = "1.6.2" ]
+  [ "$(/usr/bin/tr -d '[:space:]' < "$isolated_engine/VERSION")" = "1.6.3" ]
   /usr/bin/env node "$isolated_engine/scripts/injector.mjs" --check-payload \
     --theme-dir "$test_home/Library/Application Support/CodexDreamSkinStudio/theme" >/dev/null
   /usr/bin/cmp -s \

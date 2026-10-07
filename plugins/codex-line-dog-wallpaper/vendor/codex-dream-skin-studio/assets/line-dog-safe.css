@@ -1,0 +1,56 @@
+/* Line Dog compatibility skin. Paint backgrounds only; preserve native layout,
+   message surfaces, visibility, hit testing, and input behavior. */
+html[data-dream-skin="active"][data-dream-theme-id^="line-dog-"] {
+  --line-dog-panel: rgb(var(--ds-panel-rgb) / .90);
+  --line-dog-sidebar: rgb(var(--ds-panel-rgb) / .84);
+  --line-dog-border: rgb(var(--ds-accent-rgb) / .25);
+}
+
+html[data-dream-skin="active"][data-dream-theme-id^="line-dog-"] body {
+  background-color: var(--ds-bg) !important;
+  background-image: var(--dream-skin-art) !important;
+  background-position: var(--dream-art-position, center) !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+}
+
+/* Paint the image on the main pane as well: recent Codex versions can put an
+   opaque application surface between the body and the conversation. */
+html[data-dream-skin="active"][data-dream-theme-id^="line-dog-"]
+  main:is(.main-surface, [data-app-shell-main-surface], [class*="_MainContentSurface_"]),
+html[data-dream-skin="active"][data-dream-theme-id^="line-dog-"] [data-ds-part="main"] {
+  background-color: var(--ds-bg) !important;
+  background-image: var(--dream-skin-art) !important;
+  background-position: var(--dream-art-position, center) !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Only the known full-pane scroll surface is cleared. Native message cards,
+   composer wrappers, and route containers retain their own backgrounds. */
+html[data-dream-skin="active"][data-dream-theme-id^="line-dog-"]
+  .thread-scroll-container {
+  background-color: transparent !important;
+}
+
+html[data-dream-skin="active"][data-dream-theme-id^="line-dog-"]
+  aside.app-shell-left-panel,
+html[data-dream-skin="active"][data-dream-theme-id^="line-dog-"] [data-ds-part="sidebar"] {
+  background: var(--line-dog-sidebar) !important;
+  border-color: var(--line-dog-border) !important;
+}
+
+html[data-dream-skin="active"][data-dream-theme-id^="line-dog-"]
+  main:is(.main-surface, [data-app-shell-main-surface], [class*="_MainContentSurface_"]) > header,
+html[data-dream-skin="active"][data-dream-theme-id^="line-dog-"] [data-ds-part="header"] {
+  background-color: var(--line-dog-panel) !important;
+}
+
+html[data-dream-skin="active"][data-dream-theme-id^="line-dog-"]
+  :is(.composer-surface-chrome, [class*="_ComposerLayoutRoot_"],
+      [data-composer-surface-variant][data-composer-radius-variant]),
+html[data-dream-skin="active"][data-dream-theme-id^="line-dog-"] [data-ds-part="composer"] {
+  background-color: var(--line-dog-panel) !important;
+  border-color: var(--line-dog-border) !important;
+}

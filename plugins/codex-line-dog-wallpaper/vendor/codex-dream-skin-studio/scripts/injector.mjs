@@ -815,7 +815,12 @@ export async function loadPayload(themeDir) {
   ]);
   const { css, template } = staticAssets;
   const { art, extension, safeCssRuntime, safeCssStatus, theme } = loaded;
-  const combinedCss = safeCssRuntime ? `${css}\n${safeCssRuntime}\n` : css;
+  // The legacy full-skin sheet changes layout and visibility in newer Codex
+  // shells. Line Dog uses background-only rules so the native chat stays live.
+  const baseCss = theme.id.startsWith("line-dog-")
+    ? await fs.readFile(path.join(root, "assets", "line-dog-safe.css"), "utf8")
+    : css;
+  const combinedCss = safeCssRuntime ? `${baseCss}\n${safeCssRuntime}\n` : baseCss;
   const styleRevision = createHash("sha256").update(combinedCss).digest("hex").slice(0, 20);
   const artMetadata = readImageMetadata(art, extension);
   if (!artMetadata) {
