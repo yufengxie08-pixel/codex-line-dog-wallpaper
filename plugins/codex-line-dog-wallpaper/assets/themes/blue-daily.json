@@ -10,7 +10,7 @@
   "quote": "MAKE BORING DAYS INTERESTING",
   "image": "background.jpg",
   "appearance": "auto",
-  "art": { "safeArea": "center", "taskMode": "full", "focusX": 0.5, "focusY": 0.51 },
+  "art": { "safeArea": "center", "taskMode": "ambient", "focusX": 0.5, "focusY": 0.51 },
   "colorMode": "explicit",
   "colors": {
     "background": "#E8F3FF", "panel": "#F7FBFF", "panelAlt": "#CFE5FA",

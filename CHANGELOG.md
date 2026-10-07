@@ -1,5 +1,56 @@
 # Changelog
 
+## 2.0.11 - 2026-10-07
+
+- Keeps the sidebar and conversation on one pale pink wallpaper across both Codex conversation layouts.
+- Preserves the less transparent assistant cards, native icons, and solid selected-row color.
+
+## 2.0.10 - 2026-10-07
+
+- Makes assistant reply cards less transparent for easier reading while preserving the shared light pink wallpaper and native Codex icons.
+
+## 2.0.9 - 2026-10-07
+
+- Restores Codex's native navigation and conversation status icons.
+- Uses a solid pink highlight for the selected conversation.
+- Shares one continuous wallpaper across the sidebar and conversation, with a lighter Pink Friends background.
+
+## 2.0.8 - 2026-10-07
+
+- Reduces wallpaper blur so the Line Dog artwork stays clear while retaining a soft finish.
+- Reduces the translucent reply card's backdrop blur.
+
+## 2.0.7 - 2026-10-07
+
+- Restores translucent assistant reply cards over the pink Line Dog wallpaper.
+- Softens the conversation wallpaper slightly while keeping text, user bubbles, and input controls sharp.
+
+## 2.0.6 - 2026-10-07
+
+- Restores black user-message bubbles with white text to match the earlier Line Dog appearance.
+- Keeps the full-window wallpaper, readable replies, and composer focus fix.
+
+## 2.0.5 - 2026-10-07
+
+- Removes the clipped focus outline that appeared as two vertical bars inside the Codex composer.
+- Preserves the full-window Line Dog wallpaper and the composer surface.
+
+## 2.0.4 - 2026-10-07
+
+- Restores the continuous Line Dog wallpaper across the updated Codex frame, sidebar, conversation, and composer area.
+- Keeps conversation content and input controls visible while switching between chats.
+
+## 2.0.3 - 2026-10-07
+
+- Restores the visible Line Dog artwork behind conversations by clearing an old reading veil and painting the image on the conversation surface.
+- Keeps the Codex conversation-container fix and the existing ambient wallpaper selection.
+
+## 2.0.2 - 2026-10-07
+
+- Keeps Codex conversations visible with wide wallpapers after Codex changed the top-fade marker into a thread layout container.
+- Clears only the decorative fade, preserving the thread layout and the existing Line Dog appearance.
+- Retains the installed ambient artwork and conversation readability settings.
+
 ## 2.0.1 - 2026-09-03
 
 - Restores browser, terminal, and review tab controls in the shared Codex titlebar.

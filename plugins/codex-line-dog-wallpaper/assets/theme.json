@@ -12,7 +12,7 @@
   "appearance": "auto",
   "art": {
     "safeArea": "left",
-    "taskMode": "full",
+    "taskMode": "ambient",
     "focusX": 0.7,
     "focusY": 0.5
   },

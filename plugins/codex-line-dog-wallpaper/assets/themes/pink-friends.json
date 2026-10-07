@@ -10,7 +10,7 @@
   "quote": "BETTER TOGETHER · KEEP CREATING",
   "image": "background.jpg",
   "appearance": "auto",
-  "art": { "safeArea": "center", "taskMode": "full", "focusX": 0.5, "focusY": 0.54 },
+  "art": { "safeArea": "center", "taskMode": "ambient", "focusX": 0.5, "focusY": 0.54 },
   "colorMode": "explicit",
   "colors": {
     "background": "#FFF0F6", "panel": "#FFF8FB", "panelAlt": "#F5D5E3",

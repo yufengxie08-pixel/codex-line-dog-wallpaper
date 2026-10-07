@@ -654,7 +654,6 @@
   };
 
   const partNodes = new Set();
-  const lineDogIconNodes = new Set();
   const composerBorderRestores = new Map();
   const queryAll = (selector) => {
     if (!selector) return [];
@@ -774,38 +773,6 @@
     .map((node) => node.querySelector?.(
       "[data-response-annotation-conversation][data-response-annotation-target]",
     ) ?? node);
-  const refreshLineDogIcons = () => {
-    const desired = new Map();
-    const sidebar = [...selectorNodes("left-panel"), ...fallbackSidebarNodes()][0];
-    if (sidebar) {
-      const brandButton = sidebar.querySelector?.("button");
-      if (brandButton) desired.set(brandButton, "brand");
-      const navigationButtons = [...sidebar.querySelectorAll?.("button.sidebar-item") || []]
-        .filter((button) => !button.closest?.("[data-app-action-sidebar-thread-row]"));
-      ["new-chat", "pull-request", "scheduled", "plugins", "more"]
-        .forEach((icon, index) => {
-          const button = navigationButtons[index];
-          if (button) desired.set(button, icon);
-        });
-      for (const row of sidebar.querySelectorAll?.(
-        '[data-app-action-sidebar-thread-selected="true"], ' +
-        '[data-app-action-sidebar-thread-active="true"]',
-      ) || []) desired.set(row, "current-thread");
-    }
-    for (const button of queryAll(
-      'button[aria-label="发送"], button[aria-label="Send"], button[aria-label="send"]',
-    )) desired.set(button, "send");
-    for (const node of lineDogIconNodes) {
-      if (!desired.has(node)) node.removeAttribute?.(LINE_DOG_ICON_ATTR);
-    }
-    lineDogIconNodes.clear();
-    for (const [node, icon] of desired) {
-      if (node.getAttribute?.(LINE_DOG_ICON_ATTR) !== icon) {
-        node.setAttribute(LINE_DOG_ICON_ATTR, icon);
-      }
-      lineDogIconNodes.add(node);
-    }
-  };
   const refreshParts = () => {
     metrics.partPasses += 1;
     const desired = new Map();
@@ -845,7 +812,6 @@
       partNodes.add(node);
     }
     refreshComposerBorders(composerNodes);
-    refreshLineDogIcons();
   };
 
   const removeParts = () => {
@@ -853,8 +819,6 @@
     for (const node of partNodes) node.removeAttribute?.(PART_ATTR);
     partNodes.clear();
     for (const node of queryAll(`[${PART_ATTR}]`)) node.removeAttribute?.(PART_ATTR);
-    for (const node of lineDogIconNodes) node.removeAttribute?.(LINE_DOG_ICON_ATTR);
-    lineDogIconNodes.clear();
     for (const node of queryAll(`[${LINE_DOG_ICON_ATTR}]`)) {
       node.removeAttribute?.(LINE_DOG_ICON_ATTR);
     }

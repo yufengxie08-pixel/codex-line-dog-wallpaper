@@ -10,7 +10,7 @@
   "quote": "STAY CLOSE · KEEP CREATING",
   "image": "background.jpg",
   "appearance": "auto",
-  "art": { "safeArea": "left", "taskMode": "full", "focusX": 0.7, "focusY": 0.5 },
+  "art": { "safeArea": "left", "taskMode": "ambient", "focusX": 0.7, "focusY": 0.5 },
   "colorMode": "explicit",
   "colors": {
     "background": "#FFF4D6", "panel": "#FFF9EA", "panelAlt": "#F8DDA1",

@@ -67,7 +67,7 @@ if /usr/bin/mdfind 'kMDItemCFBundleIdentifier == "com.openai.codex"' | /usr/bin/
   isolated_engine="$test_home/Library/Application Support/CodexLineDogWallpaper/engine"
   [ -f "$isolated_engine/scripts/injector.mjs" ]
   [ -f "$isolated_engine/assets/dream-skin.css" ]
-  [ "$(/usr/bin/tr -d '[:space:]' < "$isolated_engine/VERSION")" = "1.6.2" ]
+  [ "$(/usr/bin/tr -d '[:space:]' < "$isolated_engine/VERSION")" = "1.6.14" ]
   /usr/bin/env node "$isolated_engine/scripts/injector.mjs" --check-payload \
     --theme-dir "$test_home/Library/Application Support/CodexDreamSkinStudio/theme" >/dev/null
   /usr/bin/cmp -s \

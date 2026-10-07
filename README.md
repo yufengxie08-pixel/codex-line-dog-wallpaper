@@ -10,11 +10,11 @@
 
 ## 中文说明
 
-把四张“线条小狗”插画变成 macOS Codex 桌面应用的完整皮肤。每张壁纸都拥有独立的明暗配色，覆盖侧栏、标题栏、内容区、输入框、按钮、菜单、弹窗与选中状态；同时配有小狗、爪印、骨头等专属图标。全部壁纸均为 3840×2400、16:10、sRGB，适配 MacBook Pro Retina 屏幕；首次安装默认使用“黄色相伴”。插件不会修改 Codex 应用包，而是通过仅监听本机回环地址的 Dream Skin 运行时加载皮肤。
+把四张“线条小狗”插画变成 macOS Codex 桌面应用的完整皮肤。每张壁纸都拥有独立的明暗配色，覆盖侧栏、标题栏、内容区、输入框、按钮、菜单、弹窗与选中状态；导航和对话状态图标保留 Codex 原版。全部壁纸均为 3840×2400、16:10、sRGB，适配 MacBook Pro Retina 屏幕；首次安装默认使用“黄色相伴”。插件不会修改 Codex 应用包，而是通过仅监听本机回环地址的 Dream Skin 运行时加载皮肤。
 
 ### 完整皮肤与无遮挡回复
 
-壁纸会贯穿整个 Codex 窗口，侧栏、输入框、工具卡片和弹窗使用低透明度“糖纸玻璃”表面。最终的 Codex 助手回复不显示大块白色圆角背景，文字直接呈现在壁纸上，并带有轻微阴影以维持可读性；代码块、文件预览和工具结果仍有清晰边界。皮肤会自动跟随 Codex 的明暗模式。所有效果只在本项目的线条小狗主题中启用，不会改变 U7 或其他 Dream Skin 主题。
+四套皮肤都会让侧栏和对话区共用一张连续的壁纸。输入框、工具卡片和助手回复使用半透明表面，用户消息为黑底白字，选中的对话为纯色背景；代码块、文件预览和工具结果仍有清晰边界。“粉色伙伴”的浅色模式额外使用更淡的粉色。皮肤会自动跟随 Codex 的明暗模式。所有效果只在本项目的线条小狗主题中启用，不会改变 U7 或其他 Dream Skin 主题。
 
 ### 安装方式一：Codex 插件
 
@@ -41,7 +41,7 @@ codex plugin add codex-line-dog-wallpaper@line-dog-wallpaper
 
 在 Codex 聊天框发送：`切换线条小狗皮肤`（发送“切换线条小狗壁纸”也可以）。
 
-“线条小狗壁纸选择器”技能会在对话中展示四张图片，并标出当前和默认皮肤。选中后，壁纸、明暗配色、玻璃控件和图标会一起切换；如果当前 Codex 没有安全的热切换端点，插件会提示并自动重启一次。也可以直接运行：
+“线条小狗壁纸选择器”技能会在对话中展示四张图片，并标出当前和默认皮肤。选中后，壁纸、明暗配色和半透明控件会一起切换；Codex 原版图标保持不变。如果当前 Codex 没有安全的热切换端点，插件会提示并自动重启一次。也可以直接运行：
 
 ```bash
 plugins/codex-line-dog-wallpaper/scripts/select-wallpaper-macos.sh blue-sky --restart-if-needed
@@ -79,11 +79,11 @@ plugins/codex-line-dog-wallpaper/scripts/restore-previous-macos.sh
 
 ## English
 
-Turn four Line Dog illustrations into complete skins for the Codex desktop app on macOS. Each wallpaper has its own light and dark palette across the sidebar, header, content, composer, controls, menus, dialogs, and selected states, plus purpose-built dog, paw, chat, bone, and clock icons. Every wallpaper is a 3840×2400, 16:10, sRGB asset designed for MacBook Pro Retina displays. New installations default to Yellow Together. The plugin does not modify the signed Codex app bundle; it loads the skin through a loopback-only Dream Skin runtime.
+Turn four Line Dog illustrations into complete skins for the Codex desktop app on macOS. Each wallpaper has its own light and dark palette across the sidebar, header, content, composer, controls, menus, dialogs, and selected states. Navigation and conversation status icons remain the original Codex icons. Every wallpaper is a 3840×2400, 16:10, sRGB asset designed for MacBook Pro Retina displays. New installations default to Yellow Together. The plugin does not modify the signed Codex app bundle; it loads the skin through a loopback-only Dream Skin runtime.
 
 ### Complete skin and unobstructed replies
 
-The wallpaper spans the full Codex window while the sidebar, composer, tool cards, and overlays use low-opacity candy-glass surfaces. Final assistant replies do not use a large opaque rounded surface; their text appears directly over the wallpaper with a subtle readability shadow. Code, file previews, and tool results retain clear boundaries. The skin follows Codex light and dark modes automatically and does not alter U7 or other Dream Skin themes.
+All four skins share one continuous wallpaper across the sidebar and conversation. The composer, tool cards, and assistant replies use translucent surfaces. User messages have a black background with white text, and the selected conversation has a solid highlight. Pink Friends uses a lighter pink in light mode. Code, file previews, and tool results retain clear boundaries. The skin follows Codex light and dark modes automatically and does not alter U7 or other Dream Skin themes.
 
 ### Option 1: install as a Codex plugin
 

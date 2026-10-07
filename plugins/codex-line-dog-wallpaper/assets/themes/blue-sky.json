@@ -10,7 +10,7 @@
   "quote": "CHASE THE WIND · SHIP THE IDEA",
   "image": "background.jpg",
   "appearance": "auto",
-  "art": { "safeArea": "left", "taskMode": "full", "focusX": 0.62, "focusY": 0.52 },
+  "art": { "safeArea": "left", "taskMode": "ambient", "focusX": 0.62, "focusY": 0.52 },
   "colorMode": "explicit",
   "colors": {
     "background": "#EAF5FF", "panel": "#F8FCFF", "panelAlt": "#D9EBFB",
