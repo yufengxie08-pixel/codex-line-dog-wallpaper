@@ -1,5 +1,12 @@
 # Changelog
 
+## 2.0.2 - 2026-10-07
+
+- Uses a conservative wallpaper stylesheet for Line Dog themes so current Codex chat, composer, and controls retain their native layout.
+- Leaves other Dream Skin themes on the original stylesheet.
+- Requires a normal Codex reopen after an engine update; the installer no longer reports a hot refresh from an old injector as success.
+- Uses bundled files when the double-click installer runs from a complete repository ZIP, so a repair branch does not silently install main.
+
 ## 2.0.1 - 2026-09-03
 
 - Restores browser, terminal, and review tab controls in the shared Codex titlebar.

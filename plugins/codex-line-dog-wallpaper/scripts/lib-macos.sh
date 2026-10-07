@@ -18,6 +18,7 @@ LINE_DOG_U7_PLIST="$LINE_DOG_HOME/Library/LaunchAgents/$LINE_DOG_U7_LABEL.plist"
 LINE_DOG_PORT="9341"
 LINE_DOG_DEFAULT_WALLPAPER_ID="yellow-together"
 LINE_DOG_SELECTION_FILE="$LINE_DOG_STATE_ROOT/selected-wallpaper"
+LINE_DOG_ENGINE_CHANGED=0
 
 line_dog_fail() {
   printf 'Line Dog Full Skin: %s\n' "$*" >&2
@@ -126,10 +127,12 @@ line_dog_install_engine_if_needed() {
   if [ -f "$LINE_DOG_ENGINE_ROOT/scripts/start-dream-skin-macos.sh" ] \
     && [ -f "$LINE_DOG_ENGINE_ROOT/scripts/injector.mjs" ] \
     && [ -f "$LINE_DOG_ENGINE_ROOT/assets/dream-skin.css" ] \
+    && [ -f "$LINE_DOG_ENGINE_ROOT/assets/line-dog-safe.css" ] \
     && [ "$installed_version" = "$source_version" ]; then
     return 0
   fi
 
+  LINE_DOG_ENGINE_CHANGED=1
   staging="$(/usr/bin/mktemp -d "$LINE_DOG_STATE_ROOT/engine-stage.XXXXXX")"
   /usr/bin/rsync -a --exclude '.DS_Store' "$LINE_DOG_ENGINE_SOURCE/" "$staging/"
   /bin/chmod 700 "$staging/scripts/"*.sh 2>/dev/null || true
@@ -245,6 +248,9 @@ line_dog_load_agent() {
 
 line_dog_hot_apply_if_possible() {
   [ "${LINE_DOG_TEST_MODE:-0}" != "1" ] || return 1
+  # A running injector retains the previous engine code in memory. Reopen Codex
+  # after an engine upgrade instead of claiming that a hot refresh applied it.
+  [ "$LINE_DOG_ENGINE_CHANGED" != "1" ] || return 1
   if verified_cdp_endpoint "$LINE_DOG_PORT"; then
     hot_reapply_theme "$LINE_DOG_PORT" 10000
     return $?
